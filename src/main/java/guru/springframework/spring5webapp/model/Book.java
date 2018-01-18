@@ -14,6 +14,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinColumns;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 
 /**
  * @author Teck Wei
@@ -30,10 +31,11 @@ public class Book {
 	private Long id;
 	private String title;
 	private String isbn;
-	private String publisher;
+	
+	@OneToOne
+	private Publisher publisher;
 	
 	@ManyToMany(mappedBy="books")
-	
 	private Set<Author> authors = new HashSet<>();
 	
 	/**
@@ -49,7 +51,7 @@ public class Book {
 	 * @param publisher
 	 * @param authors
 	 */
-	public Book(String title, String isbn, String publisher, Set<Author> authors) {
+	public Book(String title, String isbn, Publisher publisher, Set<Author> authors) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
@@ -62,7 +64,7 @@ public class Book {
 	 * @param isbn
 	 * @param publisher
 	 */
-	public Book(String title, String isbn, String publisher) {
+	public Book(String title, String isbn, Publisher publisher) {
 		super();
 		this.title = title;
 		this.isbn = isbn;
@@ -97,12 +99,12 @@ public class Book {
 	}
 
 
-	public String getPublisher() {
+	public Publisher getPublisher() {
 		return publisher;
 	}
 
 
-	public void setPublisher(String publisher) {
+	public void setPublisher(Publisher publisher) {
 		this.publisher = publisher;
 	}
 
@@ -143,7 +145,7 @@ public class Book {
 
 	@Override
 	public String toString() {
-		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", publisher=" + publisher + ", authors="
+		return "Book [id=" + id + ", title=" + title + ", isbn=" + isbn + ", publisher=" + publisher.getName() + ", authors="
 				+ authors + "]";
 	}
 
