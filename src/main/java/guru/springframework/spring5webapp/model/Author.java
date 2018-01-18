@@ -16,7 +16,7 @@ import javax.persistence.ManyToMany;
 
 
 /**
- * @author testing 123 gggggg
+ * @author testing 123
  *
  */
 @Entity
