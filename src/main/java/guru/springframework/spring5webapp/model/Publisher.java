@@ -14,7 +14,7 @@ public class Publisher
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long id;
 	
-	@OneToOne
+	
 	private String name;
 	private String address;
 
@@ -65,6 +65,13 @@ public class Publisher
 	public String toString() {
 		return "Publisher [id=" + id + ", name=" + name + ", address=" + address + "]";
 	}
+	
+	
+	
+	public Publisher() {
+	
+	}
+	
 	public Publisher(String name, String address) {
 		super();
 		this.name = name;
